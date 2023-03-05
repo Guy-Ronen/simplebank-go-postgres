@@ -10,7 +10,7 @@ dropdb:
 rundb:
 	docker exec -it postgres12 psql -U guy.ronen simple_bank
 
-migreateup:
+migrateup:
 	migrate -path db/migration -database "postgresql://guy.ronen:secret@localhost:5432/simple_bank?sslmode=disable" -verbose up
 
 migratedown:
@@ -22,4 +22,7 @@ sqlc:
 test:
 	go test -v -cover ./...
 
-.PHONY: postgres createdb dropdb migreateup migratedown sqlc
+server: 
+	go run main.go
+
+.PHONY: postgres createdb dropdb migreateup migratedown sqlc server
