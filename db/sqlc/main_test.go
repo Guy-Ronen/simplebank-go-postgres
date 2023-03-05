@@ -5,15 +5,11 @@ import (
 	"log"
 	"os"
 	"testing"
-
+	util "github.com/guy-ronen/simplebank/util"
 	_ "github.com/lib/pq"
 )
 
 // dbDriver is the database driver
-const (
-	dbDriver = "postgres"
-	dbSource =  "postgresql://guy.ronen:secret@localhost:5432/simple_bank?sslmode=disable"
-)
 
 // testQueries is the global queries object for all the tests
 var testQueries *Queries
@@ -23,11 +19,13 @@ var testQueries *Queries
 var testDB *sql.DB
 
 func TestMain(m *testing.M) {
-	// connect to test db
-	var err error
-
+	// read the config file
+	config, err := util.LoadConfig("../..")
+	if err != nil {
+		log.Fatal("cannot load config:", err)
+	}
 	// open a connection to the test db
-	testDB, err = sql.Open(dbDriver, dbSource)
+	testDB, err = sql.Open(config.DBDRIVER, config.DBSOURCE)
 
 	// if there is an error, log it and exit
 	if err != nil {
