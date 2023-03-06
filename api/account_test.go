@@ -81,7 +81,7 @@ func TestGetAccountAPI(t *testing.T) {
 
 		// test case 4 -  Invalid ID
 		{
-			name:      "InternalError",
+			name:      "InvalidID",
 			accountID: 0,
 
 			// build the stubs for the mock store
