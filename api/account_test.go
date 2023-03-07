@@ -22,9 +22,9 @@ func TestGetAccountAPI(t *testing.T) {
 
 	// create a test case struct to hold the test case data and expected results for each test case
 	testCases := []struct {
-		name      string
-		accountID int64
-		buildStubs func(store *mockdb.MockStore)
+		name          string
+		accountID     int64
+		buildStubs    func(store *mockdb.MockStore)
 		checkResponse func(t *testing.T, recorder *httptest.ResponseRecorder)
 	}{
 		// test case 1 - get account successfully
@@ -130,6 +130,8 @@ func TestGetAccountAPI(t *testing.T) {
 		})
 	}
 }
+
+// TODO - implemenet createAccountAPI test and DeleteAccountAPI test
 
 func RandomAccount() db.Account {
 	return db.Account{
