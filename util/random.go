@@ -6,7 +6,6 @@ import (
 	"time"
 )
 
-
 const alphabet = "abcdefghijklmnopqrstuvwxyz"
 
 func init() {
@@ -24,7 +23,7 @@ func RandomString(n int) string {
 
 	k := len(alphabet)
 
-	for i :=0; i< n; i++ {
+	for i := 0; i < n; i++ {
 		c := alphabet[rand.Intn(k)]
 		sb.WriteByte(c)
 	}
@@ -42,6 +41,6 @@ func RandomMoney() int64 {
 
 // RandomCurrency returns a random currency code.
 func RandomCurrency() string {
-	currenccies := []string {"USD", "EUR", "CAD"}
+	currenccies := []string{USD, EUR, CAD}
 	return currenccies[rand.Intn(len(currenccies))]
 }

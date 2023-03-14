@@ -3,13 +3,14 @@ package api
 import (
 	"database/sql"
 	"net/http"
+
 	"github.com/gin-gonic/gin"
 	db "github.com/guy-ronen/simplebank/db/sqlc"
 )
 
 type createAccountRequest struct {
 	Owner    string `json:"owner" binding:"required"`
-	Currency string `json:"currency" binding:"required,oneof=USD EUR"`
+	Currency string `json:"currency" binding:"required,currency"`
 }
 
 type getAccountRequest struct {
